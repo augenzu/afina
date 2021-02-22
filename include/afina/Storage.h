@@ -34,7 +34,7 @@ public:
      * Stores association between given key/value pair if key isn't present in
      * storage.
      *
-     * If given key is already present in the storage then method resturns false
+     * If given key is already present in the storage then method returns false
      * and doesn't change anything inside. Otherwise new association key->value
      * created and if successfull then true returns.
      *
