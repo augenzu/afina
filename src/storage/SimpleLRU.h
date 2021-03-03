@@ -1,6 +1,7 @@
 #ifndef AFINA_STORAGE_SIMPLE_LRU_H
 #define AFINA_STORAGE_SIMPLE_LRU_H
 
+#include <iterator>
 #include <map>
 #include <memory>
 #include <mutex>
@@ -75,11 +76,19 @@ private:
             std::reference_wrapper<lru_node>, 
             std::less<const std::string>> _lru_index;
 
+    void PutIfDefinitelyAbsent(const std::string &key, const std::string &value);
+
+    void SetNode(const std::string &key,
+            const std::string &value,
+            decltype(_lru_index)::iterator node_it);
+
     // Moves node to the head of the list
     void MoveNodeToHead(lru_node *node);
 
-    // Removes node from the list
-    // void DeleteNode(lru_node *node);
+    // Removes the tail node of the list
+    void DeleteTailNode(/*std::map<std::reference_wrapper<const std::string>, 
+            std::reference_wrapper<lru_node>, 
+            std::less<const std::string>>::const_iterator tail_it*/);
 };
 
 } // namespace Backend
