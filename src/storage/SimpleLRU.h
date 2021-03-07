@@ -86,9 +86,7 @@ private:
     void MoveNodeToHead(lru_node *node);
 
     // Removes the tail node of the list
-    void DeleteTailNode(/*std::map<std::reference_wrapper<const std::string>, 
-            std::reference_wrapper<lru_node>, 
-            std::less<const std::string>>::const_iterator tail_it*/);
+    void DeleteTailNode();
 };
 
 } // namespace Backend
